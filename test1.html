@@ -1,0 +1,73 @@
+<!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+	<title>Question 1</title>
+      <!--<link href="question1.css" rel="stylesheet" type="text/css" >
+    	<script type="text/javascript" src="q2.js"></script>
+    -->
+      <style type="text/css">
+        body {
+          background-color:blue;
+          color: white;
+          font-size: 1.6em;}
+        .id4{
+          font-weight: bold;
+        }
+        .id3 {
+          font-style: italic;
+        }
+        h1{
+          font-family: serif;
+        }
+        .hidden {display:none;}
+        .show {display:inline !important;}
+        button {
+          border: 2px solid black; background: #E5E4E2;
+          font-size: .5em; font-weight: bold; color: black;
+          padding: .8em 2em;
+          margin-top: .4em;
+        }
+      </style>
+
+    </head>
+    <body>
+      <h1 id="id1">This is a header</h1>
+      <ol id="id2">
+        <li>hello world</li>
+        <li>aloha</li>
+      </ol>
+    <p>This is paragraph id3 <span class="id3 ">and this is a span</span>and this is yet more text in the
+      paragraph.</p>
+    <p class="id4">This is paragraph id4</p>
+    <p class="id5">This is paragraph id5</p>
+    <button id="logoButton" onclick="go()">ClickMe</button><br />
+    <div id="output">Change Me</div>
+
+    <script>
+    function go(){
+      var x= document.getElementById("output");
+      x.innerHTML="";
+      for (var i = 0; i <10; i++) {
+      x.innerHTML+=i + "&nbsp "+ Math.pow(i, 2) +"<br/>";
+      //x.innerHTML+= "<br/>" +i + " "+ (i*i) +"<br/>";
+       }
+    }
+    </script>
+    <script>
+      var s=[];
+      function go(){
+        var x= document.getElementById("output");
+        x.innerHTML="";
+        for (var i = 0; i <10; i++) {
+          s.push(i);
+          function getSum(total, num){
+            return total + num;
+          }
+          var w = s.reduce(getSum);
+          x.innerHTML+= ((i+""+ w+ "<br/>"));
+      }
+    }
+    </script>
+  </body>
+    </html>

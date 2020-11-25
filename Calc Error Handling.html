@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”>
+
+<html xmlns=”http://www.w3.org/1999/xhtml”>
+
+<head>
+
+<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+
+<title>Javascript Error Handling</title>
+
+<script type=”text/javascript”>
+
+function divideMe(helpId)
+
+{
+
+var topVar = document.getElementById(“topvar”).value;      	// Gets the value stored in the textbox called topvar
+
+var botVar = document.getElementById(“botvar”).value;      	// Gets the value stored in the textbox called botvar
+
+try { // You surround your code with a try box if you want to catch possible errors
+
+if(!topVar || !botVar)
+
+{
+
+throw new Error(“Please enter a value in both fields”);
+
+}
+
+else if(isNaN(topVar) || isNaN(botVar))
+
+{
+
+throw new Error(“Please enter only numbers in the fields”);
+
+}
+
+else if(botVar == 0)
+
+{
+
+throw new Error(“You cant divide by zero”);
+
+}
+
+if (helpId != null)
+
+{
+
+while (helpId.firstChild) // Remove any warnings that may exist
+
+helpId.removeChild(helpId.firstChild);
+
+}
+
+var answer = topVar + ” / ” + botVar + ” = ” + topVar/botVar;
+
+helpId.appendChild(document.createTextNode(answer));
+
+}
+
+catch (errMsg) // If errors are triggered they are sent here
+
+{
+
+if (helpId != null)
+
+{
+
+while (helpId.firstChild) // Remove any warnings that may exist
+
+helpId.removeChild(helpId.firstChild);
+
+}
+
+helpId.appendChild(document.createTextNode(errMsg));
+
+}
+
+}
+
+</script>
+
+<noscript>  	<h3>This site requires JavaScript</h3>  	</noscript>
+
+</head>
+<body>
+
+<div>
+
+Enter the numbers you’d like to divide:<br />
+
+<input id=”topvar” name=”topvar” type=”text” size=”10″ /><br />
+
+<input id=”botvar” name=”botvar” type=”text” size=”10″          onblur=”divideMe(document.getElementById(‘answer’))” /><br />        <span id=”answer”></span>
+
+<!– this is the id number for the text box –>
+
+</div>
+</body>
+
+</html>

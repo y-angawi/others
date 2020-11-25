@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JavaScript Tutorial</title>
+    <script type="text/javascript">
+
+    <!-- Hide this from browsers that donâ��t understand Javascript
+
+      function editNodeText(id, newText) {
+        var node = document.getElementById(id);
+
+        // getElementById() returns a reference to the element based off a
+        // provided id
+
+        while (node.firstChild)
+          node.removeChild(node.firstChild);
+
+          // This code is looking for text in the span and if it finds any it is // deleting it until the span is empty.
+
+        node.appendChild(document.createTextNode(newText));
+
+        // The function createTextNode() excepts a variable named newText, and // creates a new node that will contain the text I give to it. You see, // not only is a tag considered a node, but any block of text can also // be considered a node in HTML.
+		// I then use the function appendChild() to assign the newly created
+		// text node to the span.
+
+		document.getElementById(id).style.color="red";
+		document.getElementById(id).style.position="fixed";
+		document.getElementById(id).style.top="100px";
+		document.getElementById(id).style.left="300px";
+
+		// Here I'm changing the styling of the node
+
+      }
+
+      /* To understand this code you have to understand what the Document Object Model (DOM) is. The DOM allows you to access all of the objects that lie in your HTML code. Every web page is considered to be a document object. */
+
+      /* Every tag is referred to as a node in the DOM. Javascript can be used to manipulate these HTML elements by referring to them by their defined HTML id name.
+      */
+
+      // document refers to the html page
+      // head is the first child node of the document
+      // body is the second child of document
+      // All other items in the document are easily assigned attributes by id
+
+      function editNodeText2(id, newText) {
+        // var node = document.getElementById(id).lastChild;
+        // var node = document.getElementById(id).firstChild;
+        var node = document.getElementById(id);
+        // node.nodeValue=newText;
+        node.removeChild(node.childNodes[0]);
+        node.childNodes[2].nodeValue=newText;
+        var newNode = document.createElement('hr'); // Creates a new tag element
+        node.appendChild(newNode); // Inserts the hr tag
+
+        // Create a text node
+        var randTextNode = document.createTextNode("I'm random text");
+        node.appendChild(randTextNode);
+
+      }
+
+    // --> Finish hiding the Javascript code
+    </script>
+    <noscript>
+  		<h3>This site requires JavaScript</h3>
+  	</noscript>
+
+</head>
+
+  <body>
+
+  <h5>Javascript Tutorial</h5>
+
+      <span id="spanEx" onclick="editNodeText('spanEx','New Text is Here')">Change this Text</span><br />
+
+      <div id="divEx" onclick="editNodeText2('divEx','New Text is Here')">
+      <b>Some Bold Text</b>
+      <i>Italic Text</i>
+      </div><br />
+
+
+  </body>
+</html>

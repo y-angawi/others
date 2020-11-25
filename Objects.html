@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+
+    <title>JavaScript OOP Tutorial</title>
+
+
+    </head>
+
+  	<body>
+
+  	<script language="javascript" type="text/javascript">
+  		<!-- Hide JavaScript
+
+  		// Object - Stores variables and the functions needed to manipulate them in one place
+  		// Class - Defines what variables and functions each object will have
+  		// Properties - The name given to variables in objects
+  		// Methods -  The name given to functions in objects
+
+  		// To create an object you create a function with the objects name function MyObject() {};
+  		// To create an instance of that object var myObject = new MyObject;
+
+  		// Your properties are defined when you create the object using the this keyword
+  		// This is called the constructor
+  		function Animal() { // newName,newSound,newOwner,newFavFood
+  			this.name = "No Name"; // this.name = newName;
+  			this.sound = "Grrr";
+  			this.owner = "Homeless";
+  			this.favFood = "Anything";
+  		}
+
+  			// You add methods to the class using the prototype object
+  			// You encapsulate or protect access to your properties through the use of set & get
+  			Animal.prototype.setOwner = function(newOwner)
+  			{
+  				if (typeof newOwner != 'undefined')
+  				{
+  					this.owner = newOwner;
+  				}
+  				else
+  				{
+  					document.write("Please enter a valid owner name");
+  				}
+
+  			}
+
+  			// You can also create class methods
+  			// Animal.setOwner = function(newOwner) ...
+
+  			Animal.prototype.getOwner = function()
+  			{
+  				return this.owner;
+  			}
+
+  			Animal.prototype.setName = function(newName)
+  			{
+  				if (typeof newName != 'undefined')
+  				{
+  					this.name = newName;
+  				}
+  				else
+  				{
+  					document.write("Please enter a valid animal name");
+  				}
+  			}
+
+  			Animal.prototype.getName = function()
+  			{
+  				return this.name;
+  			}
+
+  			Animal.prototype.setNoise = function(newNoise)
+  			{
+  				if (typeof newNoise != 'undefined')
+  				{
+  					this.sound = newNoise;
+  				}
+  				else
+  				{
+  					document.write("Please enter a valid animal sound");
+  				}
+  			}
+
+  			Animal.prototype.getNoise = function()
+  			{
+  				return this.sound;
+  			}
+
+  			// End of animal class definition
+
+  			var dog = new Animal(); // var dog = new Animal("Grover"); dog is a new object.
+  			document.write(dog.getName() + "<br />");
+
+  			dog.setName("Spot");
+  			dog.setOwner("Paul");
+  			dog.setNoise();
+
+  			document.write(dog.getName() + "<br />");
+  			document.write(dog.getOwner() + "<br />");
+  			document.write(dog.getNoise() + "<br />");
+
+  			// Inheritance is when a new object inherits properties & methods from another
+
+  			function Cat() {
+  				Animal.call(this); // Tells JavaScript to execute the super classes constructor
+  				this.mode = "Happy";
+  			}
+
+  			Cat.prototype = new Animal(); // Set Animal as the superclass object for Cat
+  			Cat.prototype.constructor = Cat; // Assign the right constructor to this object
+
+  			Cat.prototype.getMode = function()
+  			{
+  				return this.mode;
+  			}
+
+  			Cat.prototype.setMode = function(newMode)
+  			{
+  				if (typeof newMode != 'undefined')
+  				{
+  					this.mode = newMode;
+  				}
+  				else
+  				{
+  					document.write("Please enter a valid animal mode");
+  				}
+  			}
+
+  			var sophie = new Cat;
+
+  			sophie.setName("Sophie");
+  			sophie.setOwner("Derek");
+  			sophie.setNoise("Meow");
+
+  			document.write(sophie.getName() + "<br />");
+  			document.write(sophie.getOwner() + "<br />");
+  			document.write(sophie.getNoise() + "<br />");
+
+  			document.write(sophie instanceof Cat); // Check if sophie is an object created with the Cat class
+
+  			// As per method overloading another OOP concept
+  			// setStuff(newName)
+  			// setStuff(newName,newSound)
+  			// setStuff(newName,newSound,newOwner)
+  			// You can check whether certain properties are defined and create method prototypes on the fly
+  			// The last function created for a given name is the function attributed to the object
+  			// Prepare for insanity (You'll never do this)
+
+  			/*
+  			Cat.prototype.setStuff = function(newName,newOwner,newNoise)
+  			{
+  				if ((typeof newName != 'undefined') || (typeof newOwner != 'undefined') || (typeof newNoise != 'undefined'))
+  				{
+  					Cat.prototype.setStuff = function(newName,newOwner,newNoise)
+  					{
+  						this.name = newName;
+  						this.sound = newNoise;
+  						this.owner = newOwner;
+
+  				}
+  				else...
+  			}
+
+  			*/
+
+  			document.write("<br />" + typeof(Cat)); // This returns function for the type
+  			document.write("<br />" + typeof(sophie));
+
+  			// Because JavaScript is so loosely typed Polymorphism is possible but in ways different from every other language
+  			// doAnimalStuff(Animal) { document.write(Animal.getName() + Animal.getOwner()); }
+  			// doAnimalStuff(Cat) { document.write(Cat.getName() + Cat.getOwner()); }
+
+  			// Other languages force you to define the type being passed to the function
+  			// Since JS doesn't PM works but it loses what makes it special in other languages
+
+
+  		-->
+  	</script>
+  	<noscript>
+  		<h3>This site requires JavaScript</h3>
+  	</noscript>
+
+
+
+  	</body>
+</html>
